@@ -1,2 +1,2 @@
 # EDGE 2021-Project(1)
- Final project
+ A connect4 game in Python
