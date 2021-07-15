@@ -137,25 +137,25 @@ def gameOverP2():
 
     for i in range(len(board)):
         for j in range(4):
-            if board[i][j]=="1" and board[i][j+1]=="1" and board[i][j+2]=="1" and board[i][j+3]=="1":
+            if board[i][j]=="2" and board[i][j+1]=="2" and board[i][j+2]=="2" and board[i][j+3]=="2":
                 print("\nPlayer 2 Won!")
                 return True
 
     for j in range (len(board[0])):
         for i in range(3):
-            if board[i][j]=="1" and board[i+1][j]=="1" and board[i+2][j]=="1" and board[i+3][j]=="1":
+            if board[i][j]=="2" and board[i+1][j]=="2" and board[i+2][j]=="2" and board[i+3][j]=="2":
                 print("\nPlayer 2 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in range(4):
-            if board[i][j]=="1" and board[i-1][j+1]=="1" and board[i-2][j+2]=="1" and board[i-3][j+3]=="1":
+            if board[i][j]=="2" and board[i-1][j+1]=="2" and board[i-2][j+2]=="2" and board[i-3][j+3]=="2":
                 print("\nPlayer 2 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in [6,5,4,3]:
-            if board[i][j]=="1" and board[i-1][j-1]=="1" and board[i-2][j-2]=="1" and board[i-3][j-3]=="1":
+            if board[i][j]=="2" and board[i-1][j-1]=="2" and board[i-2][j-2]=="2" and board[i-3][j-3]=="2":
                 print("\nPlayer 2 Won!")
                 return True
     return False
