@@ -48,7 +48,9 @@ def playFriend():
             player = "2"
             showBoard()
             column = int(input("(P2) Choose a column: "))
-            placePiece(column, player)
+            if placePiece(column, player) == False:
+                counter -= 1
+                continue
             if gameOverP2( )== True:
                 showBoard()
                 break
