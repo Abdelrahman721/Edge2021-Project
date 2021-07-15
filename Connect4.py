@@ -1,3 +1,4 @@
+import random
 
 
 def showBoard():
@@ -27,6 +28,54 @@ def placePiece(column, player):
             break
 
     return True
+
+
+def getPossibleMoves():
+    moves = []
+    temp = []
+    for i in range (len(board)):
+        for j in range (len(board[0])):
+            if board[i][j] == "-":
+                moves.append(j)
+
+
+    unique = True
+    for i in range(len(moves)):
+        for j in range(len(temp)):
+            unique = True
+            if temp[j] == moves[i]:
+                unique = False
+                break
+        if unique == True:
+            temp.append(moves[i])
+    return temp
+
+
+
+def playComp():
+    counter = 0
+    player = ""
+    while True:
+        counter += 1
+        if counter % 2 != 0:
+            player = "1"
+            showBoard()
+            column = int(input("(P1) Choose a column: "))
+            if placePiece(column, player) == False:
+                counter -= 1
+                continue
+            if gameOverP1( ) == True:
+                showBoard()
+                break
+        else:
+            player = "2"
+            showBoard()
+            if placePiece(random.choice(getPossibleMoves()), player) == False:
+                counter -= 1
+                continue
+            if gameOverP2( )== True:
+                showBoard()
+                break
 
 
 def playFriend():
@@ -61,25 +110,25 @@ def gameOverP1():
     for i in range(len(board)):
         for j in range(4):
             if board[i][j]=="1" and board[i][j+1]=="1" and board[i][j+2]=="1" and board[i][j+3]=="1":
-                print("Player 1 Won!")
+                print("\nPlayer 1 Won!")
                 return True
 
     for j in range (len(board[0])):
         for i in range(3):
             if board[i][j]=="1" and board[i+1][j]=="1" and board[i+2][j]=="1" and board[i+3][j]=="1":
-                print("Player 1 Won!")
+                print("\nPlayer 1 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in range(4):
             if board[i][j]=="1" and board[i-1][j+1]=="1" and board[i-2][j+2]=="1" and board[i-3][j+3]=="1":
-                print("Player 1 Won!")
+                print("\nPlayer 1 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in [6,5,4,3]:
             if board[i][j]=="1" and board[i-1][j-1]=="1" and board[i-2][j-2]=="1" and board[i-3][j-3]=="1":
-                print("Player 1 Won!")
+                print("\nPlayer 1 Won!")
                 return True
     return False
 
@@ -89,25 +138,25 @@ def gameOverP2():
     for i in range(len(board)):
         for j in range(4):
             if board[i][j]=="1" and board[i][j+1]=="1" and board[i][j+2]=="1" and board[i][j+3]=="1":
-                print("Player 2 Won!")
+                print("\nPlayer 2 Won!")
                 return True
 
     for j in range (len(board[0])):
         for i in range(3):
             if board[i][j]=="1" and board[i+1][j]=="1" and board[i+2][j]=="1" and board[i+3][j]=="1":
-                print("Player 2 Won!")
+                print("\nPlayer 2 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in range(4):
             if board[i][j]=="1" and board[i-1][j+1]=="1" and board[i-2][j+2]=="1" and board[i-3][j+3]=="1":
-                print("Player 2 Won!")
+                print("\nPlayer 2 Won!")
                 return True
 
     for i in [5,4,3]:
         for j in [6,5,4,3]:
             if board[i][j]=="1" and board[i-1][j-1]=="1" and board[i-2][j-2]=="1" and board[i-3][j-3]=="1":
-                print("Player 2 Won!")
+                print("\nPlayer 2 Won!")
                 return True
     return False
 
