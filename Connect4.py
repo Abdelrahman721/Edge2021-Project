@@ -161,14 +161,24 @@ def gameOverP2():
     return False
 
 
+def resetBoard():
+    row = 6
+    col = 7
+    for i in range(6):
+        for j in range(7):
+            board[i][j] = "-"
+
+
 def main():
     choice = 0
     while True:
         print("\nHello there! Please choose an option to begin the game.")
         choice = int(input("\n0. Exit the game (press 0)\n1. Play a friend (press 1)\n2. Play the computer (press 2)\n"))
         if choice == 1:
+            resetBoard()
             playFriend()
         elif choice == 2:
+            resetBoard()
             playComp()
         elif choice == 0:
           return
